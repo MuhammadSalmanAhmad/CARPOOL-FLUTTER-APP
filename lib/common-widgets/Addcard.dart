@@ -6,7 +6,14 @@ class Addcard extends StatelessWidget {
   final String message;
   final String buttontext;
   VoidCallback onadd;
-  Addcard({Key? key, required this.headtext,required this.subtext,required this.message,required this.buttontext,required this.onadd}) : super(key: key);
+  Addcard(
+      {Key? key,
+      required this.headtext,
+      required this.subtext,
+      required this.message,
+      required this.buttontext,
+      required this.onadd})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,33 +22,33 @@ class Addcard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           child: Center(
             child: Text(
               headtext,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 30,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Card(
           color: Colors.black,
-          child:  ListTile(
+          child: ListTile(
             title: Text(
               subtext,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
               message,
-              style: TextStyle(color: Colors.white54),
+              style: const TextStyle(color: Colors.white54),
             ),
             isThreeLine: true,
           ),

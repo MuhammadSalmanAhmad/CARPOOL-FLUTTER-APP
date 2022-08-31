@@ -8,138 +8,179 @@ class AddCarDetails extends StatefulWidget {
 }
 
 class _AddCarDetailsState extends State<AddCarDetails> {
-  bool isvalidate = false;
-  TextEditingController carmodelTec = TextEditingController();
-  TextEditingController registeredyearTEC = TextEditingController();
-  TextEditingController registerationTEC = TextEditingController();
-  TextEditingController numberplateTEC = TextEditingController();
-  TextEditingController colorTEC = TextEditingController();
+  final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return 
-    Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-      ),
-      body:  SingleChildScrollView(child:Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              "Add a Car",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+          child: Form(
+        key: _formkey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const Text(
+                "Add a Car",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextField(
-                  style: TextStyle(color: Colors.green,fontSize: 20,fontWeight: FontWeight.bold),
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.greenAccent)),
-                      errorText:
-                          isvalidate ? "This feild can't be empty" : null,
-                      hintText: "Car model",
-                      hintStyle: TextStyle(color: Colors.white38),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white24, width: 2),
-                      )),
-                  controller: carmodelTec,
-                ),
-                SizedBox(height:20),
-                TextField(
-                  style: TextStyle(color: Colors.green,fontSize: 20,fontWeight: FontWeight.bold),
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.greenAccent)),
-                      errorText:
-                          isvalidate ? "This feild can't be empty" : null,
-                      hintText: "Registered Year",
-                      hintStyle: TextStyle(color: Colors.white38),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white24, width: 2),
-                      )),
-                  controller: registeredyearTEC,
-                ),
-                SizedBox(height: 20,),
-                TextField(
-                  style: TextStyle(color: Colors.green,fontSize: 20,fontWeight: FontWeight.bold),
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.greenAccent)),
-                      errorText:
-                          isvalidate ? "This feild can't be empty" : null,
-                      hintText: "Registeration Number",
-                      hintStyle: TextStyle(color: Colors.white38),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white24, width: 2),
-                      )),
-                  controller: registerationTEC,
-                ),
-                SizedBox(height: 20,),
-                TextField(
-                  style: TextStyle(color: Colors.green,fontSize: 20,fontWeight: FontWeight.bold),
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.greenAccent)),
-                      errorText:
-                          isvalidate==true ? "This feild can't be empty" : null,
-                      hintText: "Number Plate",
-                      hintStyle: TextStyle(color: Colors.white38),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white24, width: 2),
-                      )),
-                  controller: numberplateTEC,
-                ),
-                SizedBox(height: 20,),
-                TextField(
-                  style: TextStyle(color: Colors.green,fontSize: 20,fontWeight: FontWeight.bold),
-                  decoration: InputDecoration(
-                    focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.greenAccent)),
-                      errorText:
-                          isvalidate ? "This feild can't be empty" : null,
-                      hintText: "color",
-                      hintStyle: TextStyle(color: Colors.white38),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white24, width: 2),
-                      )),
-                  controller: colorTEC,
-                ),
-                SizedBox(
-                  height: 150,
-                ),
-                ElevatedButton(
-                
-                    style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(horizontal: 100),
-                        primary: Colors.green,
-                        shape: StadiumBorder()),
-                    onPressed: () {
-                      if (carmodelTec.text == null ||
-                          registerationTEC.text == null ||
-                          registeredyearTEC.text == null ||
-                          numberplateTEC == null ||
-                          colorTEC.text == null) {
-                        isvalidate = true;
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
                       }
+                      return null;
                     },
-                    child: Text(
-                      "Add a car",
-                      style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),
-                    ))
-              ],
-            ),
-          )
-        ],
-      ),) ,
-      backgroundColor: Colors.black,
+                    style: const TextStyle(
+                        color: Colors.green,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    decoration: const InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.greenAccent)),
+                        hintText: "Car model",
+                        hintStyle: TextStyle(color: Colors.white38),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.white24, width: 2),
+                        )),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    style: const TextStyle(
+                        color: Colors.green,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    decoration: const InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.greenAccent)),
+                        hintText: "Registered Year",
+                        hintStyle: TextStyle(color: Colors.white38),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.white24, width: 2),
+                        )),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    style: const TextStyle(
+                        color: Colors.green,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    decoration: const InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.greenAccent)),
+                        hintText: "Registeration Number",
+                        hintStyle: TextStyle(color: Colors.white38),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.white24, width: 2),
+                        )),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    style: const TextStyle(
+                        color: Colors.green,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    decoration: const InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.greenAccent)),
+                        hintText: "Number Plate",
+                        hintStyle: TextStyle(color: Colors.white38),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.white24, width: 2),
+                        )),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    style: const TextStyle(
+                        color: Colors.green,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                    decoration: const InputDecoration(
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.greenAccent)),
+                        hintText: "color",
+                        hintStyle: TextStyle(color: Colors.white38),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.white24, width: 2),
+                        )),
+                  ),
+                  const SizedBox(
+                    height: 150,
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 100),
+                          primary: Colors.green,
+                          shape: const StadiumBorder()),
+                      onPressed: () {
+                        if (_formkey.currentState!.validate()) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Processing Data')),
+                          );
+                        }
+                      },
+                      child: const Text(
+                        "Add a car",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ))
+                ],
+              ),
+            )
+          ],
+        ),
+      )),
     );
   }
 }
