@@ -13,7 +13,8 @@ import 'package:carpool/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    const myApp = MyApp();
+    await tester.pumpWidget(myApp);
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

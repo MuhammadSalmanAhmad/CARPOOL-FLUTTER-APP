@@ -51,14 +51,11 @@ class _RideShareScreenState extends State<RideShareScreen> {
         onadd: () {
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => AddRideDetails()));
-        }, 
+        },
       )
     ];
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-      ),
-      backgroundColor: Colors.black,
+      appBar: AppBar(),
       body: screens.elementAt(Itemselected),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[

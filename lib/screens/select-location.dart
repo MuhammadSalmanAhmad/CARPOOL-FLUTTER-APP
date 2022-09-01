@@ -12,17 +12,14 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,    
-      ),
+      appBar: AppBar(),
       body: const Center(
         child: Text(
           "Hello",
           style: TextStyle(color: Colors.white),
         ),
       ),
-      backgroundColor: Colors.black,
-      drawer: sidepanel(),
+      drawer: const sidepanel(),
     );
   }
 }
